@@ -11,11 +11,13 @@ import XCTest
 protocol Router {
     typealias AnswerCallback = (String) -> Void
     func routeTo(question: String, answerCallback: @escaping AnswerCallback)
+    func routeTo(result: [String: String])
 }
 
 class Flow {
     private let router: Router
     private let questions: [String]
+    private var result: [String : String] = [:]
     
     init(questions: [String], router: Router) {
         self.questions = questions
@@ -24,19 +26,26 @@ class Flow {
     
     func start() {
         if let firstQuestions = questions.first {
-            router.routeTo(question: firstQuestions, answerCallback: routeNext(from: firstQuestions))
+            router.routeTo(question: firstQuestions, answerCallback: nextCallback(from: firstQuestions))
+        } else {
+            router.routeTo(result: result)
         }
     }
     
-    private func routeNext(from question: String) -> Router.AnswerCallback {
-        return { [weak self] _ in
-            guard let strongSelf = self else { return }
+    private func nextCallback(from question: String) -> Router.AnswerCallback {
+        return { [weak self] in self?.routeNext(question, $0)}
+    }
+    
+    private func routeNext(_ question: String, _ answer: String) {
+        if let currentQuestionIndex = questions.firstIndex(of: question) {
+            result[question] = answer
             
-            if let currentQuestionIndex = strongSelf.questions.firstIndex(of: question) {
-                if currentQuestionIndex+1 < strongSelf.questions.count {
-                    let nextQuestion = strongSelf.questions[currentQuestionIndex + 1]
-                    strongSelf.router.routeTo(question: nextQuestion, answerCallback: strongSelf.routeNext(from: nextQuestion))
-                }
+            let nextQuestionIndex = currentQuestionIndex + 1
+            if nextQuestionIndex < questions.count {
+                let nextQuestion = questions[nextQuestionIndex]
+                router.routeTo(question: nextQuestion, answerCallback: nextCallback(from: nextQuestion))
+            } else {
+                router.routeTo(result: result)
             }
         }
     }
@@ -99,6 +108,37 @@ final class FlowTest: XCTestCase {
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
+    func test_start_withNoQuestions_routesToResult() {
+        makeSUT(questions: []).start()
+        
+        XCTAssertEqual(router.routedResult, [:])
+    }
+    
+    func test_start_withOneQuestions_doesNotRouteToResult() {
+        makeSUT(questions: ["Q1"]).start()
+        
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func test_startAndAnswerFirstQuestion_withTwoQuestions_doesNotRouteToResult() {
+        let sut = makeSUT(questions: ["Q1", "Q2"])
+        sut.start()
+        
+        router.answerCallback("A1")
+        
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func test_startAndAnswersFirstAndSecondQuestion_withTwoQuestion_routesToResult() {
+        let sut = makeSUT(questions: ["Q1" , "Q2"])
+        sut.start()
+        
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        
+        XCTAssertEqual(router.routedResult, ["Q1" : "A1", "Q2" : "A2"])
+    }
+    
     //MARK: - Helpers -
     
     func makeSUT(questions: [String]) -> Flow {
@@ -108,11 +148,16 @@ final class FlowTest: XCTestCase {
     
     class RouterSpy: Router {
         var routedQuestions: [String] = []
+        var routedResult: [String: String]? = nil
         var answerCallback: Router.AnswerCallback = { _ in }
         
         func routeTo(question: String, answerCallback: @escaping AnswerCallback) {
             routedQuestions.append(question)
             self.answerCallback = answerCallback
+        }
+        
+        func routeTo(result: [String : String]) {
+            routedResult = result
         }
 
     }

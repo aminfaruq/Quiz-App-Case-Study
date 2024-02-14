@@ -5,6 +5,7 @@
 //  Created by Amin faruq on 13/02/24.
 //
 
+/*MARK: - For now i don't need it 
 import XCTest
 
 final class QuizAppUITests: XCTestCase {
@@ -39,3 +40,4 @@ final class QuizAppUITests: XCTestCase {
         }
     }
 }
+*/

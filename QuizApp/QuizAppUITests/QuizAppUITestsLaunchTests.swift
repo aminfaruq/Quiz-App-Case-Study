@@ -5,6 +5,7 @@
 //  Created by Amin faruq on 13/02/24.
 //
 
+/*MARK: - For now i don't need it
 import XCTest
 
 final class QuizAppUITestsLaunchTests: XCTestCase {
@@ -30,3 +31,4 @@ final class QuizAppUITestsLaunchTests: XCTestCase {
         add(attachment)
     }
 }
+*/

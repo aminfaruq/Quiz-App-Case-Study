@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "CC2B51B5-2B43-4691-BBD8-564DD3A0C997",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "FlowTest\/test_startAndAnswerFirstQuestion_withTwoQuestions_doesNotRouteToResult()",
+        "FlowTest\/test_startAndAnswersFirstAndSecondQuestion_withTwoQuestion_routesToResult()",
+        "FlowTest\/test_startAndAnswersFirstAndSecondQuestion_withTwoQuestion_scores()",
+        "FlowTest\/test_startAndAnswersFirstAndSecondQuestion_withTwoQuestion_scoresWithRightAnswers()",
+        "FlowTest\/test_startAndAnswersFirstQuestionAndSecondQuestion_withThreeQuestions_routeToSecondAndThirdQuestion()",
+        "FlowTest\/test_startAndAnswersFirstQuestion_withOneQuestions_doesNotRouteToAnotherQuestion()",
+        "FlowTest\/test_startTwice_withTwoQuestions_routeToCorrectQuestionTwice()",
+        "FlowTest\/test_start_withNoQuestions_doesNotRouteToQuestion()",
+        "FlowTest\/test_start_withNoQuestions_routesToResult()",
+        "FlowTest\/test_start_withOneQuestion_routeToCorrectQuestion()",
+        "FlowTest\/test_start_withOneQuestion_routeToCorrectQuestion_2()",
+        "FlowTest\/test_start_withOneQuestions_doesNotRouteToResult()",
+        "FlowTest\/test_start_withTwoQuestions_routeToCorrectQuestion_2()",
+        "GameTest\/test_startGame_answerOneOutOfTwoCorrectly_scoresOne()",
+        "GameTest\/test_startGame_answerTwoOutOfTwoCorrectly_scoresTwo()",
+        "GameTest\/test_startGame_answerZeroOutOfTwoCorrectly_scoresZero()",
+        "QuestionTest\/test_equal_isEqual()",
+        "QuestionTest\/test_hasValue_multipleAnswer_returnsTypeHash()",
+        "QuestionTest\/test_hasValue_singleAnswer_returnsTypeHash()",
+        "QuestionTest\/test_notEqual_isNotEqual()"
+      ],
+      "target" : {
+        "containerPath" : "container:QuizEngine.xcodeproj",
+        "identifier" : "83DD2E952B85ED0900F3B2CB",
+        "name" : "QuizEngine_iOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}

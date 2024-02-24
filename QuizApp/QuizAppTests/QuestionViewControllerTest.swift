@@ -32,6 +32,14 @@ final class QuestionViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.tableView.title(at: 1), "A2")
     }
     
+    func test_viewDidLoad_withSingleSelection_configuresTableView() {
+        XCTAssertFalse(makeSUT(options: ["A1", "A2"], allowsMultipleSelection: false).tableView.allowsMultipleSelection)
+    }
+    
+    func test_viewDidLoad_withMultipleSelection_configuresTableView() {
+        XCTAssertTrue(makeSUT(options: ["A1", "A2"], allowsMultipleSelection: true).tableView.allowsMultipleSelection)
+    }
+    
     func test_optionSelected_withSingleSelection_notifiesDelegateWithLastSelection() {
         var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
@@ -56,8 +64,7 @@ final class QuestionViewControllerTest: XCTestCase {
     
     func test_optionSelected_withMultipleSelectionEnabled_notifiesDelegateSelections() {
         var receivedAnswer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
-        sut.tableView.allowsMultipleSelection = true
+        let sut = makeSUT(options: ["A1", "A2"], selection:  { receivedAnswer = $0 }, allowsMultipleSelection: true)
         
         sut.tableView.select(row: 0)
         XCTAssertEqual(receivedAnswer, ["A1"])
@@ -68,8 +75,7 @@ final class QuestionViewControllerTest: XCTestCase {
     
     func test_optionDeselected_withMultipleSelectionEnabled_notifiesDelegate() {
         var receivedAnswer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
-        sut.tableView.allowsMultipleSelection = true
+        let sut = makeSUT(options: ["A1", "A2"], selection:  { receivedAnswer = $0 }, allowsMultipleSelection: true)
         
         sut.tableView.select(row: 0)
         XCTAssertEqual(receivedAnswer, ["A1"])
@@ -83,11 +89,17 @@ final class QuestionViewControllerTest: XCTestCase {
     func makeSUT(
         question: String = "",
         options: [String] = [],
-        selection: @escaping ([String]) -> Void = { _ in }
+        selection: @escaping ([String]) -> Void = { _ in },
+        allowsMultipleSelection: Bool = false
     ) -> QuestionViewController {
-        let sut = QuestionViewController(question: question, options: options, selection: selection)
+        let sut = QuestionViewController(
+            question: question, 
+            options: options,
+            allowsMultipleSelection: allowsMultipleSelection,
+            selection: selection)
         
         sut.loadViewIfNeeded()
+
         return sut
     }
 }

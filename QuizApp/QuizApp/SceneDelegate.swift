@@ -11,24 +11,39 @@ import QuizEngine
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var game: Game<Question<String>, [String], NavigationControllerRouter>?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene{
             let window = UIWindow(windowScene: windowScene)
             
-//            let viewController = QuestionViewController(question: "A Questions?", options: ["Options 1", "Options 2"], selection: { print($0) })
-            let viewController = ResultsViewController(summary: "You got 1/2 correct", answers: [
-                PresentableAnswer(question: "Question?", answer: "Yeah! Yeah!Yeah!Yeah!Yeah!Yeah!Yeah!Yeah!Yeah!Yeah!", wrongAnswer: nil),
-                PresentableAnswer(question: "Another Question?", answer: "Hell Yeah!", wrongAnswer: "Hell no")
-            ])
+            let question1 = Question.singleAnswer("What's Mike's nationality?")
+            let question2 = Question.multipleAnswer("What's are Caio's nationalities?")
+
+            let questions = [question1, question2]
             
-            _ = viewController.view
-//            viewController.tableView.allowsMultipleSelection = false
-            window.rootViewController = viewController
+            let option1 = "Canadian"
+            let option2 = "American"
+            let option3 = "Greek"
+            let options1 = [option1, option2, option3]
             
+            let option4 = "Portuguese"
+            let option5 = "American"
+            let option6 = "Brazilian"
+            let options2 = [option4, option5, option6]
+            
+            let correctAnswers = [question1: [option3], question2: [option4, option6]]
+            
+            let navigationController = UINavigationController()
+            let factory = iOSViewControllerFactory(questions: questions, options: [question1: options1, question2: options2], correctAnswers: correctAnswers)
+            let router = NavigationControllerRouter(navigationController: navigationController, factory: factory)
+            
+            window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()
+            
+            game = startGame(questions: questions, router: router, correctAnswers: correctAnswers)
+
         }
     }
 
@@ -41,7 +56,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {}
 
     func sceneDidEnterBackground(_ scene: UIScene) {}
-
-
 }
 

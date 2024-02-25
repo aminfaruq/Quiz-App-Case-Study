@@ -12,9 +12,9 @@ struct ResultsPresenter {
     let questions: [Question<String>]
     let correctAnswers: Dictionary<Question<String>, [String]>
     
-    var summary: String {
-        return "You got 1/2 correct"
-    }
+    var title: String { "Result" }
+    
+    var summary: String { "You got \(result.score)/\(result.answers.count) correct" }
     
     var presentableAnswer: [PresentableAnswer] {
         return questions.map { (question) in

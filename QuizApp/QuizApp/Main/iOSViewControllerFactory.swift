@@ -12,15 +12,15 @@ class iOSViewControllerFactory: ViewControllerFactory {
     
     private let questions: [Question<String>]
     private let options: Dictionary<Question<String>, [String]>
-    private let correctAnswers: Dictionary<Question<String>, [String]>
+    private let correctAnswers: Dictionary<Question<String>, Set<String>>
 
-    init(questions: [Question<String>], options: Dictionary<Question<String>, [String]>, correctAnswers: Dictionary<Question<String>, [String]>) {
+    init(questions: [Question<String>], options: Dictionary<Question<String>, [String]>, correctAnswers: Dictionary<Question<String>, Set<String>>) {
         self.questions = questions
         self.options = options
         self.correctAnswers = correctAnswers
     }
     
-    func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
+    func questionViewController(for question: Question<String>, answerCallback: @escaping (Set<String>) -> Void) -> UIViewController {
         guard let options = self.options[question] else {
             fatalError("Couldn't find options for question: \(question)")
         }
@@ -28,7 +28,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         return questionViewController(for: question, options: options, answerCallback: answerCallback)
     }
     
-    private func questionViewController(for question: Question<String>, options: [String], answerCallback: @escaping ([String]) -> Void) -> UIViewController {
+    private func questionViewController(for question: Question<String>, options: [String], answerCallback: @escaping (Set<String>) -> Void) -> UIViewController {
         switch question {
         case .singleAnswer(let value):
             return questionViewController(
@@ -52,7 +52,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         value: String,
         options: [String],
         allowsMultipleSelection: Bool = false,
-        answerCallback: @escaping ([String]) -> Void
+        answerCallback: @escaping (Set<String>) -> Void
     ) -> QuestionViewController {
         
         let presenter = QuestionPresenter(questions: questions, question: question)
@@ -60,14 +60,14 @@ class iOSViewControllerFactory: ViewControllerFactory {
             question: value,
             options: options,
             allowsMultipleSelection: allowsMultipleSelection,
-            selection: answerCallback)
+            selection: { answerCallback(Set($0))} )
         
         controller.title = presenter.title
         return controller
     }
     
-    func resultsViewController(for result: Result<Question<String>, [String]>) -> UIViewController {
-        let presenter = ResultsPresenter(result: result, questions: questions, correctAnswers: correctAnswers)
+    func resultsViewController(for result: Result<Question<String>, Set<String>>) -> UIViewController {
+        let presenter = ResultsPresenter(result: result, questions: questions, options: options, correctAnswers: correctAnswers)
         let controller = ResultsViewController(summary: presenter.summary, answers: presenter.presentableAnswer)
         controller.title = presenter.title
         return controller

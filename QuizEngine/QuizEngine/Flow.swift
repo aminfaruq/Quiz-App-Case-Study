@@ -7,12 +7,15 @@
 
 import Foundation
 
-class Flow<Question, Answer, R: Router> where R.Question == Question, R.Answer == Answer {
+class Flow <R: Router> {
+    typealias Question = R.Question
+    typealias Answer = R.Answer
+    
     private let router: R
     private let questions: [Question]
-    private var answers: [Question : Answer] = [:]
+    private var answers: [Question: Answer] = [:]
     private var scoring: ([Question: Answer]) -> Int
-
+    
     init(questions: [Question], router: R, scoring: @escaping ([Question: Answer]) -> Int) {
         self.questions = questions
         self.router = router
@@ -20,28 +23,26 @@ class Flow<Question, Answer, R: Router> where R.Question == Question, R.Answer =
     }
     
     func start() {
-        if let firstQuestions = questions.first {
-            router.routeTo(question: firstQuestions, answerCallback: nextCallback(from: firstQuestions))
+        routeToQuestion(at: questions.startIndex)
+    }
+    
+    private func routeToQuestion(at index: Int) {
+        if index < questions.endIndex {
+            let question = questions[index]
+            router.routeTo(question: question, answerCallback: callback(for: question, at: index))
         } else {
             router.routeTo(result: result())
         }
     }
     
-    private func nextCallback(from question: Question) -> (Answer) -> Void {
-        return { [weak self] in self?.routeNext(question, $0)}
+    private func routeToQuestion(after index: Int) {
+        routeToQuestion(at: questions.index(after: index))
     }
     
-    private func routeNext(_ question: Question, _ answer: Answer) {
-        if let currentQuestionIndex = questions.firstIndex(of: question) {
-            answers[question] = answer
-            
-            let nextQuestionIndex = currentQuestionIndex + 1
-            if nextQuestionIndex < questions.count {
-                let nextQuestion = questions[nextQuestionIndex]
-                router.routeTo(question: nextQuestion, answerCallback: nextCallback(from: nextQuestion))
-            } else {
-                router.routeTo(result: result())
-            }
+    private func callback(for question: Question, at index: Int) -> (Answer) -> Void {
+        return { [weak self] answer in
+            self?.answers[question] = answer
+            self?.routeToQuestion(after: index)
         }
     }
     

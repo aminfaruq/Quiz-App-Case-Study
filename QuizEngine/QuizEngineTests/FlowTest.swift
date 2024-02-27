@@ -10,7 +10,7 @@ import XCTest
 
 final class FlowTest: XCTestCase {
     
-    let router = RouterSpy()
+    private let router = RouterSpy()
     
     func test_start_withNoQuestions_doesNotRouteToQuestion() {
         makeSUT(questions: []).start()
@@ -41,7 +41,7 @@ final class FlowTest: XCTestCase {
         
         sut.start()
         sut.start()
-
+        
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q1"])
     }
     
@@ -51,7 +51,7 @@ final class FlowTest: XCTestCase {
         
         router.answerCallback("A1")
         router.answerCallback("A2")
-
+        
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q2", "Q3"])
     }
     
@@ -107,7 +107,7 @@ final class FlowTest: XCTestCase {
     
     func test_startAndAnswersFirstAndSecondQuestion_withTwoQuestion_scoresWithRightAnswers() {
         var receivedAnswers = [String: String]()
-        let sut = makeSUT(questions: ["Q1" , "Q2"], scoring: { answers in 
+        let sut = makeSUT(questions: ["Q1" , "Q2"], scoring: { answers in
             receivedAnswers = answers
             return 20
         })
@@ -121,9 +121,33 @@ final class FlowTest: XCTestCase {
     
     //MARK: - Helpers -
     
-    func makeSUT(questions: [String], scoring: @escaping ([String: String]) -> Int = { _ in return 0 }) -> Flow<String, String, RouterSpy> {
+    private weak var weakSUT: Flow<RouterSpy>?
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        XCTAssertNil(weakSUT, "Memory leak detected. Weak reference to the SUT (Flow<RouterSpy>) instance is not nil.")
+    }
+    
+    private func makeSUT(questions: [String],
+                         scoring: @escaping ([String: String]) -> Int = { _ in 0 }) -> Flow<RouterSpy> {
         let sut = Flow(questions: questions, router: router, scoring: scoring)
+        weakSUT = sut
         return sut
     }
     
+    private class RouterSpy: Router {
+        var routedQuestions: [String] = []
+        var routedResult: Result<String, String>? = nil
+        var answerCallback: (Answer) -> Void = { _ in }
+        
+        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
+            routedQuestions.append(question)
+            self.answerCallback = answerCallback
+        }
+        
+        func routeTo(result: Result<String, String>) {
+            routedResult = result
+        }
+    }
 }

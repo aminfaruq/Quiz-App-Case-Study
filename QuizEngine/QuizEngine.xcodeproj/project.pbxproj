@@ -14,13 +14,13 @@
 		83DBE6E62B83C13B00D90842 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6E52B83C13B00D90842 /* Router.swift */; };
 		83DBE6E82B83C14C00D90842 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6E72B83C14C00D90842 /* Result.swift */; };
 		83DBE6EA2B83C19100D90842 /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6E92B83C19100D90842 /* DeprecatedGameTest.swift */; };
-		83DBE6EE2B83C8EA00D90842 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6ED2B83C8EA00D90842 /* Game.swift */; };
+		83DBE6EE2B83C8EA00D90842 /* DeprecatedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6ED2B83C8EA00D90842 /* DeprecatedGame.swift */; };
 		83DD2E972B85ED0900F3B2CB /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DD2E8F2B85ED0800F3B2CB /* QuizEngine.framework */; };
 		83DD2EAA2B85EEA900F3B2CB /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E5A3A52B78805A008AE4B5 /* FlowTest.swift */; };
 		83DD2EAB2B85EEA900F3B2CB /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6E92B83C19100D90842 /* DeprecatedGameTest.swift */; };
 		83DD2EAC2B85EEB700F3B2CB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6E52B83C13B00D90842 /* Router.swift */; };
 		83DD2EAD2B85EEB700F3B2CB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6E72B83C14C00D90842 /* Result.swift */; };
-		83DD2EAE2B85EEB700F3B2CB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6ED2B83C8EA00D90842 /* Game.swift */; };
+		83DD2EAE2B85EEB700F3B2CB /* DeprecatedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DBE6ED2B83C8EA00D90842 /* DeprecatedGame.swift */; };
 		83DD2EAF2B85EEB700F3B2CB /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E5A3A72B7881E8008AE4B5 /* Flow.swift */; };
 		83E5A3962B787FBC008AE4B5 /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E5A38D2B787FBB008AE4B5 /* QuizEngine.framework */; };
 		83E5A3A62B78805A008AE4B5 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E5A3A52B78805A008AE4B5 /* FlowTest.swift */; };
@@ -50,7 +50,7 @@
 		83DBE6E52B83C13B00D90842 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		83DBE6E72B83C14C00D90842 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		83DBE6E92B83C19100D90842 /* DeprecatedGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedGameTest.swift; sourceTree = "<group>"; };
-		83DBE6ED2B83C8EA00D90842 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		83DBE6ED2B83C8EA00D90842 /* DeprecatedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedGame.swift; sourceTree = "<group>"; };
 		83DD2E8F2B85ED0800F3B2CB /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DD2E962B85ED0900F3B2CB /* QuizEngine_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngine_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E5A38D2B787FBB008AE4B5 /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +119,7 @@
 				83E5A3A72B7881E8008AE4B5 /* Flow.swift */,
 				83DBE6E52B83C13B00D90842 /* Router.swift */,
 				83DBE6E72B83C14C00D90842 /* Result.swift */,
-				83DBE6ED2B83C8EA00D90842 /* Game.swift */,
+				83DBE6ED2B83C8EA00D90842 /* DeprecatedGame.swift */,
 				8358D1192B8A620700AA6301 /* Question.swift */,
 			);
 			path = QuizEngine;
@@ -313,7 +313,7 @@
 				8358D1232B8A669700AA6301 /* Question.swift in Sources */,
 				83DD2EAD2B85EEB700F3B2CB /* Result.swift in Sources */,
 				83DD2EAF2B85EEB700F3B2CB /* Flow.swift in Sources */,
-				83DD2EAE2B85EEB700F3B2CB /* Game.swift in Sources */,
+				83DD2EAE2B85EEB700F3B2CB /* DeprecatedGame.swift in Sources */,
 				83DD2EAC2B85EEB700F3B2CB /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +336,7 @@
 				83DBE6E82B83C14C00D90842 /* Result.swift in Sources */,
 				83DBE6E62B83C13B00D90842 /* Router.swift in Sources */,
 				83E5A3A82B7881E8008AE4B5 /* Flow.swift in Sources */,
-				83DBE6EE2B83C8EA00D90842 /* Game.swift in Sources */,
+				83DBE6EE2B83C8EA00D90842 /* DeprecatedGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

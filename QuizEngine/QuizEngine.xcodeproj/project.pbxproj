@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83022C632B915842005E2684 /* QuizDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83022C622B915842005E2684 /* QuizDelegate.swift */; };
 		8358D1212B8A62B900AA6301 /* QuestionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358D1202B8A62B900AA6301 /* QuestionTest.swift */; };
 		8358D1222B8A640400AA6301 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358D1192B8A620700AA6301 /* Question.swift */; };
 		8358D1232B8A669700AA6301 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358D1192B8A620700AA6301 /* Question.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83022C622B915842005E2684 /* QuizDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDelegate.swift; sourceTree = "<group>"; };
 		8358D1192B8A620700AA6301 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		8358D1202B8A62B900AA6301 /* QuestionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTest.swift; sourceTree = "<group>"; };
 		83DBE6E52B83C13B00D90842 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				83E5A3A72B7881E8008AE4B5 /* Flow.swift */,
 				83DBE6E52B83C13B00D90842 /* Router.swift */,
+				83022C622B915842005E2684 /* QuizDelegate.swift */,
 				83DBE6E72B83C14C00D90842 /* Result.swift */,
 				83DBE6ED2B83C8EA00D90842 /* DeprecatedGame.swift */,
 				8358D1192B8A620700AA6301 /* Question.swift */,
@@ -337,6 +340,7 @@
 				83DBE6E62B83C13B00D90842 /* Router.swift in Sources */,
 				83E5A3A82B7881E8008AE4B5 /* Flow.swift in Sources */,
 				83DBE6EE2B83C8EA00D90842 /* DeprecatedGame.swift in Sources */,
+				83022C632B915842005E2684 /* QuizDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

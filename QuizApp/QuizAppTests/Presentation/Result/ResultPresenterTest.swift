@@ -28,10 +28,7 @@ final class ResultPresenterTest: XCTestCase {
     }
     
     func test_presentableAnswers_withoutQuestions_isEmpty() {
-        let answers = Dictionary<Question<String>, [String]>()
-        let result = Result(answers: answers, score: 0)
-        
-        let sut = ResultsPresenter(result: result, questions: [], correctAnswers: [:])
+        let sut = makeSUT()
         
         XCTAssertTrue(sut.presentableAnswers.isEmpty)
     }

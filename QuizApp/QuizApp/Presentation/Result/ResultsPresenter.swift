@@ -21,16 +21,6 @@ final class ResultsPresenter {
         self.scorer = scorer
     }
     
-    init(result: Result<Question<String>, [String]>, questions: [Question<String>], correctAnswers: Dictionary<Question<String>, [String]>) {
-        self.userAnswers = questions.map { question in
-            (question, result.answers[question]!)
-        }
-        self.correctAnswers = questions.map { question in
-            (question, correctAnswers[question] ?? [])
-        }
-        self.scorer = { _, _ in result.score }
-    }
-    
     var title: String { "Result" }
     
     var summary: String { "You got \(score)/\(userAnswers.count) correct" }

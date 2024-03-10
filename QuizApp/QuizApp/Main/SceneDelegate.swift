@@ -35,7 +35,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let correctAnswers = [question1: [option3], question2: [option4, option6]]
             
             let navigationController = UINavigationController()
-            let factory = iOSViewControllerFactory(questions: questions, options: [question1: options1, question2: options2], correctAnswers: correctAnswers)
+            let factory = iOSViewControllerFactory(
+                options: [question1: options1, question2: options2],
+                correctAnswers: [(question1, [option3]), (question2, [option4, option6])]
+            )
             let router = NavigationControllerRouter(navigationController: navigationController, factory: factory)
             
             window.rootViewController = navigationController

@@ -21,7 +21,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         self.correctAnswers = { correctAnswers }
     }
 
-    init(questions: [Question<String>], options: Dictionary<Question<String>, [String]>, correctAnswers: Dictionary<Question<String>, [String]>) {
+    private init(questions: [Question<String>], options: Dictionary<Question<String>, [String]>, correctAnswers: Dictionary<Question<String>, [String]>) {
         self.questions = questions
         self.options = options
         self.correctAnswers = { questions.map { question in

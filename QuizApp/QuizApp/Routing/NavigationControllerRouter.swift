@@ -8,7 +8,7 @@
 import UIKit
 import QuizEngine
 
-class NavigationControllerRouter: Router {
+final class NavigationControllerRouter: QuizDelegate {
     private let navigationController: UINavigationController
     private let factory: ViewControllerFactory
     
@@ -17,14 +17,14 @@ class NavigationControllerRouter: Router {
         self.factory = factory
     }
     
-    func routeTo(question: Question<String>, answerCallback: @escaping (Set<String>) -> Void) {
+    func answer(for question: Question<String>, completion: @escaping ([String]) -> Void) {
         switch question {
         case .singleAnswer:
-            show(factory.questionViewController(for: question, answerCallback: answerCallback))
+            show(factory.questionViewController(for: question, answerCallback: completion))
 
         case .multipleAnswer:
             let button = UIBarButtonItem(title: "Submit", style: .done, target: nil, action: nil)
-            let buttonController = SubmitButtonController(button, answerCallback)
+            let buttonController = SubmitButtonController(button, completion)
             let controller = factory.questionViewController(for: question, answerCallback: { selection in
                 buttonController.update(selection)
             })
@@ -33,8 +33,8 @@ class NavigationControllerRouter: Router {
         }
     }
     
-    func routeTo(result: Result<Question<String>, Set<String>>) {
-        show(factory.resultsViewController(for: result))
+    func didCompleteQuiz(withAnswers answers: [(question: Question<String>, answer: [String])]) {
+        show(factory.resultsViewController(for: answers))
     }
     
     func show(_ viewController: UIViewController) {
@@ -44,10 +44,10 @@ class NavigationControllerRouter: Router {
 
 private class SubmitButtonController: NSObject {
     let button: UIBarButtonItem
-    let callback: (Set<String>) -> Void
-    private var model: Set<String> = []
+    let callback: ([String]) -> Void
+    private var model: [String] = []
     
-    init(_ button: UIBarButtonItem, _ callback: @escaping (Set<String>) -> Void) {
+    init(_ button: UIBarButtonItem, _ callback: @escaping ([String]) -> Void) {
         self.button = button
         self.callback = callback
         super.init()
@@ -60,7 +60,7 @@ private class SubmitButtonController: NSObject {
         updateButtonState()
     }
     
-    func update(_ model: Set<String>) {
+    func update(_ model: [String]) {
         self.model = model
         updateButtonState()
     }

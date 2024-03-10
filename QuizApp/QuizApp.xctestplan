@@ -23,6 +23,13 @@
         "identifier" : "83539FE32B7B931E000ABF1A",
         "name" : "QuizAppTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/QuizEngine\/QuizEngine.xcodeproj",
+        "identifier" : "83DD2E952B85ED0900F3B2CB",
+        "name" : "QuizEngine_iOSTests"
+      }
     }
   ],
   "version" : 1

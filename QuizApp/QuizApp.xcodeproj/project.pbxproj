@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830584242BA00E4400E55A04 /* SingleAnswerQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830584232BA00E4400E55A04 /* SingleAnswerQuestion.swift */; };
 		830E56972B80ECE100851946 /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 830E56962B80ECE100851946 /* CorrectAnswerCell.xib */; };
 		8311EE1A2B81B7060088339B /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311EE192B81B7060088339B /* UITableViewExtensions.swift */; };
 		8311EE1C2B81B7600088339B /* PresentableAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311EE1B2B81B7600088339B /* PresentableAnswer.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		830584232BA00E4400E55A04 /* SingleAnswerQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestion.swift; sourceTree = "<group>"; };
 		830E56962B80ECE100851946 /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
 		8311EE192B81B7060088339B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		8311EE1B2B81B7600088339B /* PresentableAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableAnswer.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		830584222BA00E0700E55A04 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				830584232BA00E4400E55A04 /* SingleAnswerQuestion.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		834C81CE2B8B38AD00C9E91C /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +152,7 @@
 		834C81CF2B8B38D400C9E91C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				830584222BA00E0700E55A04 /* SwiftUI */,
 				830584212BA00DC200E55A04 /* UIKit */,
 			);
 			path = UI;
@@ -489,6 +500,7 @@
 				8358D10E2B88BAAE00AA6301 /* iOSViewControllerFactory.swift in Sources */,
 				83DD2EB82B85F1E800F3B2CB /* NavigationControllerRouter.swift in Sources */,
 				8353A0042B7B96C2000ABF1A /* QuestionViewController.swift in Sources */,
+				830584242BA00E4400E55A04 /* SingleAnswerQuestion.swift in Sources */,
 				8358DC8E2B7FBD82000848CB /* ResultsViewController.swift in Sources */,
 				8358D10A2B88B21800AA6301 /* ViewControllerFactory.swift in Sources */,
 			);

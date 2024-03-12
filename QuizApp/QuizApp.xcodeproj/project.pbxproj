@@ -117,6 +117,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830584212BA00DC200E55A04 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				834C81D32B8B39A500C9E91C /* Helpers */,
+				834C81D42B8B39C000C9E91C /* Launch */,
+				834C81D12B8B395300C9E91C /* Result */,
+				834C81D02B8B393A00C9E91C /* Question */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		834C81CE2B8B38AD00C9E91C /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,10 +142,7 @@
 		834C81CF2B8B38D400C9E91C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				834C81D32B8B39A500C9E91C /* Helpers */,
-				834C81D42B8B39C000C9E91C /* Launch */,
-				834C81D12B8B395300C9E91C /* Result */,
-				834C81D02B8B393A00C9E91C /* Question */,
+				830584212BA00DC200E55A04 /* UIKit */,
 			);
 			path = UI;
 			sourceTree = "<group>";

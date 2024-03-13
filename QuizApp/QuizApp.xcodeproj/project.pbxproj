@@ -148,6 +148,16 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		8326260D2BA189EE00C7A324 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				834C81DA2B8B3A9D00C9E91C /* Helpers */,
+				834C81DC2B8B3AB600C9E91C /* Question */,
+				834C81DD2B8B3AD900C9E91C /* Result */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		834C81CE2B8B38AD00C9E91C /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,9 +280,7 @@
 		834C81DB2B8B3AAD00C9E91C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				834C81DA2B8B3A9D00C9E91C /* Helpers */,
-				834C81DC2B8B3AB600C9E91C /* Question */,
-				834C81DD2B8B3AD900C9E91C /* Result */,
+				8326260D2BA189EE00C7A324 /* UIKit */,
 			);
 			path = UI;
 			sourceTree = "<group>";

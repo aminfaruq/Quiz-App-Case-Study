@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		830584242BA00E4400E55A04 /* SingleAnswerQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830584232BA00E4400E55A04 /* SingleAnswerQuestion.swift */; };
-		830584262BA0397C00E55A04 /* QuestionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830584252BA0397C00E55A04 /* QuestionHeader.swift */; };
+		830584262BA0397C00E55A04 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830584252BA0397C00E55A04 /* HeaderView.swift */; };
 		830584282BA0445500E55A04 /* SingleTextSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830584272BA0445500E55A04 /* SingleTextSelectionCell.swift */; };
 		8305842A2BA0869300E55A04 /* iOSSwiftUIViewControllerFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830584292BA0869300E55A04 /* iOSSwiftUIViewControllerFactoryTest.swift */; };
 		8305842C2BA087A500E55A04 /* iOSSwiftUIViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8305842B2BA087A500E55A04 /* iOSSwiftUIViewControllerFactory.swift */; };
@@ -74,7 +74,7 @@
 
 /* Begin PBXFileReference section */
 		830584232BA00E4400E55A04 /* SingleAnswerQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestion.swift; sourceTree = "<group>"; };
-		830584252BA0397C00E55A04 /* QuestionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHeader.swift; sourceTree = "<group>"; };
+		830584252BA0397C00E55A04 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		830584272BA0445500E55A04 /* SingleTextSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextSelectionCell.swift; sourceTree = "<group>"; };
 		830584292BA0869300E55A04 /* iOSSwiftUIViewControllerFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactoryTest.swift; sourceTree = "<group>"; };
 		8305842B2BA087A500E55A04 /* iOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
@@ -149,14 +149,30 @@
 		830584222BA00E0700E55A04 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				8319307E2BA2BF5600138A1D /* Helpers */,
+				8319307F2BA2BF6200138A1D /* Question */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		8319307E2BA2BF5600138A1D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				830584252BA0397C00E55A04 /* HeaderView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8319307F2BA2BF6200138A1D /* Question */ = {
+			isa = PBXGroup;
+			children = (
 				830584232BA00E4400E55A04 /* SingleAnswerQuestion.swift */,
-				830584252BA0397C00E55A04 /* QuestionHeader.swift */,
 				830584272BA0445500E55A04 /* SingleTextSelectionCell.swift */,
 				832626112BA19D0E00C7A324 /* MutipleSelectionStore.swift */,
 				832626132BA1A5CA00C7A324 /* MultipleAnswerQuestion.swift */,
 				8310FF5A2BA1A746006456FA /* MultipleTextSelectionCell.swift */,
 			);
-			path = SwiftUI;
+			path = Question;
 			sourceTree = "<group>";
 		};
 		8326260D2BA189EE00C7A324 /* UIKit */ = {
@@ -528,7 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830584262BA0397C00E55A04 /* QuestionHeader.swift in Sources */,
+				830584262BA0397C00E55A04 /* HeaderView.swift in Sources */,
 				8311EE1A2B81B7060088339B /* UITableViewExtensions.swift in Sources */,
 				83DC452A2B9B6FC30067511E /* BasicScore.swift in Sources */,
 				8310FF5B2BA1A747006456FA /* MultipleTextSelectionCell.swift in Sources */,
